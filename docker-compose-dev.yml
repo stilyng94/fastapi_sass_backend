@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  api_dev:
+    restart: 'on-failure'
+    container_name: 'api-service_dev'
+    build:
+      context: .
+    image: escobar0216/fastapi_saas_backend_dev
+    environment:
+      PORT: '80'
+    env_file:
+      - '.env'
+    ports:
+      - '8000:80'
+    volumes:
+      - './app:/server/app'
