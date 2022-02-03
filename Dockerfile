@@ -17,19 +17,18 @@ RUN dos2unix ./start.sh
 RUN chmod +x ./start.sh
 
 
-FROM python:3.10-slim-bullseye as mid
+FROM python:3.10-slim-bullseye
 
 RUN apt-get update
 
 ENV PATH="/server/venv/bin:$PATH"
+ENV PYTHONUNBUFFERED="true"
 
-COPY --from=compile-image /server/venv /server/venv
-
-# Make sure we use the virtualenv:
 WORKDIR /server
 
+COPY --from=compile-image /server/venv /server/venv
 COPY ./app ./app
-COPY ./start.sh .
+COPY --from=compile-image /server/start.sh .
 
 EXPOSE 80
 
