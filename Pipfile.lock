@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9fd14e20afc64c19a8e3e687e6702da6c94a03543067dd52c169136174b22b09"
+            "sha256": "f63e53604d57a3febfea81e892be5e662bb1bc978ae6f69764cc945ced659e46"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -60,6 +60,7 @@
                 "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b",
                 "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"
             ],
+            "markers": "platform_system == 'Windows'",
             "version": "==0.4.4"
         },
         "dnspython": {
@@ -361,6 +362,14 @@
             "markers": "python_version >= '3.6'",
             "version": "==0.17.1"
         },
+        "typer": {
+            "hashes": [
+                "sha256:63c3aeab0549750ffe40da79a1b524f60e08a2cbc3126c520ebf2eeaf507f5dd",
+                "sha256:d81169725140423d072df464cad1ff25ee154ef381aaf5b8225352ea187ca338"
+            ],
+            "index": "pypi",
+            "version": "==0.4.0"
+        },
         "typing-extensions": {
             "hashes": [
                 "sha256:4ca091dea149f945ec56afb48dae714f21e8692ef22a395223bcd328961b6a0e",
@@ -526,6 +535,7 @@
                 "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b",
                 "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"
             ],
+            "markers": "platform_system == 'Windows'",
             "version": "==0.4.4"
         },
         "coverage": {

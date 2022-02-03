@@ -28,7 +28,7 @@ WORKDIR /server
 
 COPY --from=compile-image /server/venv /server/venv
 COPY ./app ./app
-COPY ./scripts ./scripts
+COPY ./cli ./cli
 COPY --from=compile-image /server/start.sh .
 
 EXPOSE 80
