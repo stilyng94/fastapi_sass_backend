@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 fastapi = {extras = ["all"], version = "*"}
 typer = "*"
+celery = "*"
+redis = "*"
+emails = "*"
 
 [dev-packages]
 flake8 = "*"
