@@ -15,3 +15,30 @@ services:
       - '8000:80'
     volumes:
       - './app:/server/app'
+      - './cli:/server/cli'
+
+  redis:
+    image: redis:6-alpine
+    env_file: .env
+    container_name: redis
+    restart: on-failure
+    volumes:
+      - 'redis:/var/lib/redis/data'
+    ports:
+      - "6379:6379"
+
+  worker:
+    build:
+      context: .
+    image: escobar0216/fastapi_saas_backend_dev
+    container_name: worker
+    restart: on-failure
+    command: celery -A app.worker worker -l info
+    env_file: .env
+    volumes:
+      - './app:/server/app'
+      - './cli:/server/cli'
+    depends_on:
+      - redis
+volumes:
+  redis:
