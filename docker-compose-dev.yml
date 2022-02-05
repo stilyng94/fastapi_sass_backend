@@ -22,6 +22,11 @@ services:
     env_file: .env
     container_name: redis
     restart: on-failure
+    healthcheck:
+      test: ["redis-cli","ping"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
     volumes:
       - 'redis:/var/lib/redis/data'
     ports:
@@ -33,7 +38,7 @@ services:
     image: escobar0216/fastapi_saas_backend_dev
     container_name: worker
     restart: on-failure
-    command: celery -A app.worker worker -l info
+    command: ["./start_worker.sh"]
     env_file: .env
     volumes:
       - './app:/server/app'

@@ -11,10 +11,14 @@ RUN . /server/venv/bin/activate
 
 COPY /requirements.txt ./
 COPY /start.sh ./
+COPY /start_worker.sh ./
+
 
 RUN pip install -r requirements.txt
 RUN dos2unix ./start.sh
 RUN chmod +x ./start.sh
+RUN dos2unix ./start_worker.sh
+RUN chmod +x ./start_worker.sh
 
 
 FROM python:3.10-slim-bullseye
@@ -30,6 +34,8 @@ COPY --from=compile-image /server/venv /server/venv
 COPY ./app ./app
 COPY ./cli ./cli
 COPY --from=compile-image /server/start.sh .
+COPY --from=compile-image /server/start_worker.sh .
+
 
 EXPOSE 80
 

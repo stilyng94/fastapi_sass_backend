@@ -1,4 +1,5 @@
 import logging
+from typing import Any
 
 import emails
 from emails.template import JinjaTemplate
@@ -10,7 +11,7 @@ def send_email(
         subject_template: str = "",
         html_template: str = "",
         environment=None,
-) -> None:
+) -> Any:
     if environment is None:
         environment = {}
     message = emails.Message(
@@ -27,3 +28,4 @@ def send_email(
             smtp_options["password"] = settings.SMTP_PASSWORD
     response = message.send(to=email_to, render=environment, smtp=smtp_options)
     logging.info(f"send email result: {response}")
+    return response
